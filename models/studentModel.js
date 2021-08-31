@@ -24,9 +24,23 @@ exports.saveStudent = (data,callback) => {
     });
 };
 
-exports.getStudent = id => {};
+exports.getSingleStudent = (id,callback) => {
+    const query = `SELECT * FROM db_students WHERE id = ?`;
+    mysql.query(query,[id],(error,data) => {
+        if(error) callback('Error with updating the data',undefined);
+        else callback(undefined,data[0]);
+    });
+};
 
-exports.updateStudent = id => {};
+exports.updateStudent = (input,id,callback) => {
+
+    const query = `UPDATE db_students SET ? WHERE id = ?`;
+
+    mysql.query(query,[input,id],(error,data) => {
+        if(error) callback('Error with updating the data',undefined);
+        else callback(undefined,data);
+    });
+};
 
 exports.deleteStudent = (id,callback) => {
     const query = `DELETE FROM db_students WHERE id = ?`;

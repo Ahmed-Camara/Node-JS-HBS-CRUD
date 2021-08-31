@@ -14,9 +14,8 @@ const partialsPath = path.join(__dirname,'../templates/partials');
 
 app.set('view engine','hbs');
 app.set('views',viewsPath);
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(staticPage));
 const filenames = fs.readdirSync(partialsPath);
 

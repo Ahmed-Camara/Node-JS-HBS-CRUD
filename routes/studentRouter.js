@@ -13,7 +13,11 @@ router
     .post(studentController.createStudent);
 router
     .route('/student/delete/:id')
-    .get(studentController.deleteStudent)
+    .get(studentController.deleteStudent);
+
+router
+    .route('/student/update/:id')
+    .get(studentController.updateStudent);
 /*
 router
     .route('/')
