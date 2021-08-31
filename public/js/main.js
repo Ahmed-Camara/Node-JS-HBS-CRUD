@@ -1,10 +1,13 @@
 $(document).ready(function(){
 
     
-    $('.aBtn, .eBtn').on('click',function(e){
+    $('.delBtn').on('click',function(e){
         e.preventDefault();
         const href = $(this).attr('href');
-        alert('event');
+        $('#deleteModal #delRef').attr('href',href);
+        const id = $(this).data('id');
+
+        $('#deleteModal').modal();
     });
     
 });

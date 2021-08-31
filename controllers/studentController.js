@@ -43,11 +43,9 @@ exports.createStudent = (req,res) => {
     });
 };
 exports.deleteStudent = (req, res) => {
-    const id = req.body.id;
-    console.log(`id is : ${id}`);
-    res.send()
+    const id = req.params.id;
 
-    /*Student.deleteStudent(id,(error) => {
+    Student.deleteStudent(id,(error) => {
         if(error){
             return res.send({
                 error
@@ -55,13 +53,6 @@ exports.deleteStudent = (req, res) => {
         }else{
             res.redirect('/');
         }
-    });*/
+    });
 };
-/*
-exports.getAllStudent = async (req, res) => {
-    console.log('display home page getAll')
-};
-exports.getStudent = async (req, res) => {};
-exports.createStudent = async (req, res) => {};
 exports.updateStudent = async (req, res) => {};
-exports.deleteStudent = async (req, res) => {};*/
