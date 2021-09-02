@@ -1,5 +1,7 @@
 const Student = require('../models/studentModel');
 
+const studentData = {};
+
 exports.homePage = (req,res) => {
     
     const query = 'SELECT * FROM db_students';
@@ -55,41 +57,25 @@ exports.deleteStudent = (req, res) => {
         }
     });
 };
-exports.updateStudent = (req, res) => {
 
-    const formData = req.body;
-    const input = {
-        fullName:formData.fullName,
-        email:formData.email,
-        address:formData.address,
-        phone:formData.phone
-    };
-    const id = req.params.id;
-    Student.updateStudent(input,id,(error,data) => {
+exports.getStudent = (req,res) => {
+    const id = req.params.id * 1;
 
+    Student.getStudent(id,(error,data) => {
         if(error){
             return res.send({
                 error
             });
         }else{
-            res.redirect('/');
+            res.json({
+                data
+            });
         }
     });
-
-    /*
-    console.log(`id now is ${id}`);
-    Student.getSingleStudent(id,(error,data) => {
-        if(error){
-            return res.send({
-                error
-            });
-        }else{
-            console.log('no error')
-            console.log(data)
-            res.send({
-                data
-            })
-        }
-    });*/
 };
 
+
+exports.updateStudent = (req, res) => {
+    const id = req.params.id * 1;
+    console.log(`id dd in updateStudent is : ${id}`);
+};

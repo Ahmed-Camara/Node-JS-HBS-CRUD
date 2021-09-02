@@ -16,8 +16,11 @@ router
     .get(studentController.deleteStudent);
 
 router
+    .route('/student/get/:id')
+    .get(studentController.getStudent);
+router
     .route('/student/update/:id')
-    .get(studentController.updateStudent);
+    .post(studentController.updateStudent);
 /*
 router
     .route('/')

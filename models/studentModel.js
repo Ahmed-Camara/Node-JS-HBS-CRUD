@@ -24,7 +24,7 @@ exports.saveStudent = (data,callback) => {
     });
 };
 
-exports.getSingleStudent = (id,callback) => {
+exports.getStudent = (id,callback) => {
     const query = `SELECT * FROM db_students WHERE id = ?`;
     mysql.query(query,[id],(error,data) => {
         if(error) callback('Error with updating the data',undefined);

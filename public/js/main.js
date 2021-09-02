@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+	
+	let id = 0;
     $('.nBtn,.table .eBtn').on('click',function(e){
 		
 		e.preventDefault();
@@ -7,39 +9,20 @@ $(document).ready(function(){
 		var href = $(this).attr('href');
         
 		$.get(href,function(student,status){
-
-				$('.forms #fullName').val(student.fullName);
-				$('.forms #email').val(student.email);
-				$('.forms #address').val(student.address);
-                $('.forms #phone').val(student.phone);
-			});
+			$('#editEmployeeModal #fullName').val(student.data.Full_name);
+			$('#editEmployeeModal #email').val(student.data.Email);
+			$('#editEmployeeModal #address').val(student.data.Address);
+			$('#editEmployeeModal #phone').val(student.data.Phone);
+			id = student.data.id;
 			
-			$('.forms #editEmployeeModal').modal();
-		/*var text = $(this).text();
-		alert(text)
-		if(text=='Edit'){
-			$.get(href,function(student,status){
+		});
 
-				$('.forms #fullName').val(student.fullName);
-				$('.forms #email').val(student.email);
-				$('.forms #address').val(student.address);
-                $('.forms #phone').val(student.phone);
-			});
-			
-			$('.forms #exampleModalLong').modal();
 		
-		}else{
-			
-			$('.forms #id').val(0);
-			$('.forms #Eid').hide();
-			$('.forms #first_name').val('');
-			$('.forms #last_name').val('');
-			$('.forms #email').val('');
-			
-			$('.forms #exampleModalLong').modal();
-		}*/
+		$('#editEmployeeModal').modal();
 		
 	});
+
+	
     
     $('.delBtn').on('click',function(e){
         e.preventDefault();
@@ -49,5 +32,12 @@ $(document).ready(function(){
 
         $('#deleteModal').modal();
     });
+
+
+	$('#uBtn').on('click',function(e){
+		e.preventDefault();
+
+		$('#updateForm').attr('action',`/student/update/${id}`).submit();
+	});
     
 });
