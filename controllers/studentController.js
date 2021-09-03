@@ -80,15 +80,6 @@ exports.getStudent = (req,res) => {
 exports.updateStudent = (req, res) => {
     const id = req.params.id * 1;
 
-    console.log(`id dd in updateStudent is : ${id}`);
-    if(studentData === undefined){
-        console.log('undefined')
-    }else{
-        console.log(`Data to be updated : ${studentData.Full_name}`);
-    }
-
-    console.log(req.body);
-
     const input = {
         Full_name:req.body.fullName,
         Email:req.body.email,
@@ -96,7 +87,6 @@ exports.updateStudent = (req, res) => {
         Phone:req.body.phone
     };
 
-    console.log(`input : ${input.Full_name}`);
 
     Student.updateStudent(input,id,(error) => {
 
