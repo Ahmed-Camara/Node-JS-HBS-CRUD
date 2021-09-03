@@ -32,8 +32,6 @@ exports.createStudent = (req,res) => {
         phone:formData.phone
     };
 
-    console.log(`input : ${input.email}`);
-
     Student.saveStudent(input,(error) => {
 
         if(error){
