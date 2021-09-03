@@ -1,6 +1,7 @@
+const mysqlConnection = require('../models/database');
 const Student = require('../models/studentModel');
 
-const studentData = {};
+let studentData = {};
 
 exports.homePage = (req,res) => {
     
@@ -67,6 +68,7 @@ exports.getStudent = (req,res) => {
                 error
             });
         }else{
+            //studentData = data;
             res.json({
                 data
             });
@@ -77,5 +79,33 @@ exports.getStudent = (req,res) => {
 
 exports.updateStudent = (req, res) => {
     const id = req.params.id * 1;
+
     console.log(`id dd in updateStudent is : ${id}`);
+    if(studentData === undefined){
+        console.log('undefined')
+    }else{
+        console.log(`Data to be updated : ${studentData.Full_name}`);
+    }
+
+    console.log(req.body);
+
+    const input = {
+        Full_name:req.body.fullName,
+        Email:req.body.email,
+        Address:req.body.address,
+        Phone:req.body.phone
+    };
+
+    console.log(`input : ${input.Full_name}`);
+
+    Student.updateStudent(input,id,(error) => {
+
+        if(error){
+            return res.send({
+                error
+            });
+        }
+
+        res.redirect('/');
+    });
 };

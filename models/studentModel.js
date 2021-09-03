@@ -37,8 +37,8 @@ exports.updateStudent = (input,id,callback) => {
     const query = `UPDATE db_students SET ? WHERE id = ?`;
 
     mysql.query(query,[input,id],(error,data) => {
-        if(error) callback('Error with updating the data',undefined);
-        else callback(undefined,data);
+        if(error) callback('Error with updating the data');
+        else callback(undefined);
     });
 };
 
